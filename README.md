@@ -11,6 +11,12 @@ The .py files should both be in the main directory, and the index.html file shou
 ```
 
 ### Dependencies
-| Name | Version |
+| Name | min Version |
 |-|-|
 | Python | 3.11.8 |
+| flask | |
+| pandas | |
+| numpy | |
+| datetime | |
+| fmrest | |
+| xlswriter | |
