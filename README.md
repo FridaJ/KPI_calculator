@@ -26,3 +26,7 @@ The .py files should both be in the main directory, and the index.html file shou
 | numpy | 1.26.4 |
 | python-fmrest | 1.7.3 |
 | XlsWriter | 3.1.1 |
+
+### Development
+- Currently, the file generation takes a long time and this will be optimized
+- Since the file generation takes a long time, a spinner will be added
