@@ -3,7 +3,7 @@ Python Flask app presenting an xlsx-file with project KPIs for PPS VR reporting
 
 ### Running the app
 After setting up the files with the correct structure (see below), the app is run using the command
->\>python app.py
+>\> python app.py
 
 The index page is then served on http://127.0.0.1:5000
 This page will be used from the PPS Filemaker Project Database using the Filemaker "run from url" command.
