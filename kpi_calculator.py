@@ -6,9 +6,6 @@ def get_kpis():
     import pandas as pd
     import datetime
     import numpy as np
-    #import logging # for creating log file
-    #from contextlib import redirect_stdout
-    #import io
     
     ##### Using REST-api to get data from the FileMaker database
     
@@ -66,14 +63,7 @@ def get_kpis():
     pps_data = pps_data.replace(r"^ +| +$", r"", regex=True) # to remove all spaces from beginning and end of strings
     
     affiliations = {'gu.se': 'Gothenburg University', 'lu.se': 'Lund University', 'liu.se': 'Linköping University', 'ki.se': 'KI', 'kth.se':'KTH', 'su.se':'Stockholm University', 'uu.se':'Uppsala University', 'umu.se':'Umeå University', 'chalmers.se':'Chalmers University', 'slu.se':'SLU'}
-    
-    # From here, log to save output to log file
-    # Set up an in-memory string buffer
-    #f = io.StringIO()
-    
-    # Redirect stdout to the buffer
-    #with redirect_stdout(f):
-    
+
     # Correct wrong data and fill missing data
     
     affiliations = {'gu.se': 'Gothenburg University', 'lu.se': 'Lund University', 'liu.se': 'Linköping University', 'ki.se': 'KI', 'kth.se':'KTH', 'su.se':'Stockholm University', 'uu.se':'Uppsala University', 'umu.se':'Umeå University', 'chalmers.se':'Chalmers University', 'slu.se':'SLU'}
@@ -146,11 +136,8 @@ def get_kpis():
                     aff_name = no_data_aff.iloc[id,]['Applicant_University_Company']
             if aff_name in affiliations.values():
                 app_id = no_data_aff.iloc[id,]['ApplicationID']
-                #print(f"Setting affiliation type to Academic for {app_id} because affiliation is {aff_name}.")
                 pps_data.loc[pps_data.ApplicationID == app_id, 'Investigator_PrimaryAffiliation'] = 'Academic'
-            #if not pd.isna(no_data_aff.iloc[id,]['Investigator_Email']):
-            #    if any(key in no_data_aff.iloc[id,]['Investigator_Email'] for key in affiliations.keys()):
-            #        print('Found email in dict.')
+
     
         no_data_aff_after_fill = pps_data[pd.isna(pps_data['Investigator_PrimaryAffiliation'])]
         if not no_data_aff_after_fill.empty:
@@ -248,10 +235,6 @@ def get_kpis():
     print("\n---------------------------------------------------------------------------\n")
     
     if not no_data_status.empty:
-            #print("\nThe following contacts have projects missing a project status:\n")
-            #no_data_status_grouped = no_data_status.groupby(['project::PPScontact', 'ApplicationID'])['ApplicationID'].count()
-            #print(no_data_status_grouped)
-    
             # Set project status to 'Not started' for projects (subprojects) with missing status:
             print(f"Setting project status to \"Not started\" for the following projects with missing status:\n")
             for id in range(len(no_data_status['project::ProjectID'])):
@@ -262,11 +245,7 @@ def get_kpis():
             print('\nAll projects with missing status have now been set to \'Not started\'.')
     else:
         print('All projects have data for project status.')
-    
-    # Get the captured output from the buffer
-    #out = f.getvalue()
-    # Write the captured output to the log file
-    #logging.info(out)
+        
     
     #   Assign new category Academic/Non-academic
     
