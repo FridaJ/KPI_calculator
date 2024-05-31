@@ -28,5 +28,4 @@ The .py files should both be in the main directory, and the index.html file shou
 | XlsWriter | 3.1.1 |
 
 ### Development
-- 240530: The file generation takes a long time and this will be optimized
-- 240530: Since the file generation takes a long time, a spinner will be added
+- 240530: Since the file generation takes some time, a spinner will be added
