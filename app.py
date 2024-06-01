@@ -28,7 +28,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index_new.html')
+    return render_template('index.html')
 
 # Function to run KPI calculations and create zip file
 def run_kpi_calc():
