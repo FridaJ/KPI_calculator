@@ -6,19 +6,20 @@ def get_kpis():
     import pandas as pd
     import datetime
     import numpy as np
+    import os
     
     ##### Using REST-api to get data from the FileMaker database
     
     fms_application = fmrest.Server('https://fmapp19-p.gu.gu.se',
-                       user = user,
-                       password = password,
+                       user = os.environ.get('user'),
+                       password = os.environ.get('password'),
                        database = 'pps_data',
                        layout = 'application',
                        api_version = 'vLatest')
     
     fms_project = fmrest.Server('https://fmapp19-p.gu.gu.se',
-                       user = user,
-                       password = password,
+                       user = os.environ.get('user'),
+                       password = os.environ.get('password'),
                        database = 'pps_data',
                        layout = 'project',
                        api_version = 'vLatest')
