@@ -10,7 +10,7 @@ The .py files should both be in the main directory, and the index.html file shou
             |_______ index.html
 ```
 
-### Dependencies
+### Dependencies (see [requirements.txt](requirements.txt))
 | Name | min Version |
 |-|-|
 | python | 3.11.9 |
