@@ -1,26 +1,5 @@
 # KPI_calculator
 Python Flask app presenting an xlsx-file with project KPIs for PPS VR reporting
-
-### Downloading Files
-
-### Direct Download
-
-1. Navigate to the main page of the repository on GitHub.
-2. Click the **Code** button near the top right of the repository page.
-3. In the dropdown, click **Download ZIP**.
-4. Extract the downloaded ZIP file to access the files.
-
-### Cloning the Repository
-
-To clone the repository using Git, follow these steps:
-
-1. Make sure you have Git installed on your machine. If not, download and install it from [git-scm.com](https://git-scm.com/).
-2. Open a terminal or command prompt.
-3. Use the `git clone` command followed by the repository URL. For example:
-
-    ```sh
-    git clone https://github.com/FridaJ/KPI_calculator
-    ```
     
 ### File structure
 The .py files should both be in the main directory, and the index.html file should be in a subdirectory named 'templates'
