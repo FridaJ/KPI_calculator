@@ -11,15 +11,19 @@ def get_kpis():
     ##### Using REST-api to get data from the FileMaker database
     
     fms_application = fmrest.Server('https://fmapp19-p.gu.gu.se',
-                       user = os.environ.get('user'),
-                       password = os.environ.get('password'),
+                       #user = os.environ.get('user'),
+                       #password = os.environ.get('password'),
+                       user = 'api',
+                       password = 'pythonR3st',
                        database = 'pps_data',
                        layout = 'application',
                        api_version = 'vLatest')
     
     fms_project = fmrest.Server('https://fmapp19-p.gu.gu.se',
-                       user = os.environ.get('user'),
-                       password = os.environ.get('password'),
+                       #user = os.environ.get('user'),
+                       #password = os.environ.get('password'),
+                       user = 'api',
+                       password = 'pythonR3st',
                        database = 'pps_data',
                        layout = 'project',
                        api_version = 'vLatest')
@@ -562,7 +566,7 @@ def get_kpis():
         df_to_print = pd.DataFrame(batches, columns=['PPS_lab', 'Total', 'Male', 'Female'])
         return df_to_print
     
-    def kpis_to_excel(filename='kpis_VR.xlsx'):
+    def kpis_to_excel(filename='files/kpis_VR.xlsx'):
         
         import xlsxwriter
         

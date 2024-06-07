@@ -7,6 +7,7 @@ from kpi_calculator import get_kpis
 import logging
 import sys
 import zipfile
+import os
 
 # For print statement redirects
 class RedirectStdoutToFile:
@@ -24,8 +25,8 @@ class RedirectStdoutToFile:
 
 app = Flask(__name__)
 
-# Configure logging
-#logging.basicConfig(filename='kpis.log', level=logging.INFO, format='%(message)s')
+# Create dir for created files
+os.makedirs("files", exist_ok=False)
 
 # Route for the index page
 @app.route('/')
@@ -34,20 +35,21 @@ def index():
 
 def run_kpi_calc():
     # Capture the print statements for log file
-    with RedirectStdoutToFile('pps_data.log'):
+    with RedirectStdoutToFile('files/pps_data.log'):
         try:
             # Run the KPI script function
             get_kpis()
         except Exception as e:
             print("An error occurred while running kpi_calculator.py:", e)
 
-# In your Flask route, call the function to run kpi_calculator.py
-#@app.route('/run_kpi_calc')
-#def execute_kpi_calc():
-#    run_kpi_calc()
-#    return "kpi_calculator.py executed successfully"
-
 # Route to handle file download
+@app.route('/files/<path:filename>', methods=['GET'])
+def download_file(filename):    
+    # Run the function to generate KPIs and log output
+    run_kpi_calc()
+    return send_from_directory(directory='files', filename=filename)
+
+'''
 @app.route('/download')
 def download_zip_file():
     # Run the function to generate KPIs and log output
@@ -59,6 +61,7 @@ def download_zip_file():
         zipf.write('pps_data.log')
         
     return send_file('KPI_files.zip', as_attachment=True)
+'''
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
