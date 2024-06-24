@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_file, jsonify
+from flask import Flask, render_template, send_file
 from kpi_calculator import get_kpis
 import sys
 import zipfile
